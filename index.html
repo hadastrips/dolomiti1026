@@ -3,494 +3,582 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>טיול שלכת בצפון איטליה</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>טיול שלכת - צפון איטליה</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
         body {
             font-family: 'Assistant', sans-serif;
-            background-color: #fcf9f5; /* Soft warm background */
+            background-color: #fcf9f6; /* Very light warm background */
         }
         
-        .bg-autumn-gradient {
-            background: linear-gradient(135deg, #b7410e 0%, #e69a22 50%, #40e0d0 100%);
-            background-size: 200% 200%;
-            animation: gradientMove 10s ease infinite;
+        /* Removing default arrow from details/summary */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        /* Smooth animation for the custom chevron icon */
+        details[open] summary ~ * {
+            animation: slideDown 0.3s ease-in-out;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Custom colors based on requested palette */
+        .bg-autumn { background-color: #c95c33; } /* Rust/Coral */
+        .text-autumn { color: #c95c33; }
+        .border-autumn { border-color: #c95c33; }
+        
+        .bg-teal-custom { background-color: #26a69a; } /* Clear Teal/Turquoise */
+        .text-teal-custom { color: #26a69a; }
+        
+        /* Header background pattern */
+        .header-bg {
+            background: linear-gradient(135deg, #e06c3a 0%, #c95c33 100%);
+            position: relative;
+            overflow: hidden;
         }
-
-        /* Glassmorphism effect for the header */
-        .glass-header {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        .header-bg::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
         }
-
-        /* Fade in animation for cards */
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Staggered animation delays for cards */
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-        .delay-400 { animation-delay: 400ms; }
-        .delay-500 { animation-delay: 500ms; }
-        .delay-600 { animation-delay: 600ms; }
     </style>
 </head>
-<body class="text-stone-800 antialiased selection:bg-teal-200 selection:text-teal-900 pb-12">
+<body class="text-stone-800 antialiased selection:bg-teal-200">
 
-    <header class="bg-autumn-gradient text-white pb-16 pt-12 px-6 rounded-b-[2.5rem] shadow-lg relative overflow-hidden">
-        <!-- Decorative background elements -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl -mt-20 -mr-20"></div>
-        <div class="absolute bottom-0 left-0 w-48 h-48 bg-teal-900 opacity-20 rounded-full blur-2xl -mb-10 -ml-10"></div>
-        
-        <div class="relative z-10 max-w-lg mx-auto text-center glass-header p-6 rounded-3xl shadow-sm">
-            <span class="inline-block py-1 px-3 rounded-full bg-white/20 text-white text-sm font-semibold mb-3 tracking-wide backdrop-blur-sm">
-                ✈️ בדרך לאיטליה
-            </span>
-            <h1 class="text-4xl font-extrabold mb-2 leading-tight drop-shadow-md">חופשת בנות<br>בצפון איטליה</h1>
-            <p class="text-lg font-medium opacity-90 drop-shadow-sm">18-23 באוקטובר 2026 🍂</p>
-        </div>
+    <header class="header-bg text-white pt-10 pb-20 px-6 rounded-b-[2rem] shadow-md text-center">
+        <h1 class="text-3xl font-extrabold mb-1 tracking-tight">טיול בנות - צפון איטליה</h1>
+        <p class="text-lg opacity-90 font-medium"><i class="far fa-calendar-alt ml-1"></i> 18-23 באוקטובר 2026</p>
     </header>
 
-    <main class="max-w-lg mx-auto px-5 -mt-8 relative z-20 space-y-6">
+    <main class="max-w-lg mx-auto px-4 -mt-14 relative z-20 pb-10">
+        
+        <!-- Round Logo Placeholder -->
+        <div class="flex justify-center mb-6">
+            <div class="w-28 h-28 bg-white rounded-full p-1.5 shadow-xl">
+                <img src="https://placehold.co/150x150/26a69a/ffffff?text=Italy+2026" alt="Logo" class="w-full h-full object-cover rounded-full">
+            </div>
+        </div>
 
-        <!-- Day 1 Card -->
-        <article class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden fade-in-up delay-100 border border-stone-50">
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-1">
-                    <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-l from-[#b7410e] to-[#e69a22]">יום א' 18/10</h2>
-                    <span class="text-2xl">🥂</span>
+        <div class="space-y-6">
+
+            <div class="bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden">
+                <div class="bg-orange-50 border-b border-orange-100 px-5 py-3 flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-autumn"><i class="fas fa-plane-arrival ml-2"></i>יום א' 18/10: נחיתה והתאקלמות</h2>
                 </div>
-                <h3 class="text-lg font-bold text-stone-500 mb-6 border-b border-stone-100 pb-3">נחיתה והתאקלמות</h3>
+                <div class="p-4 space-y-3">
+                    
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">8:00</span>
+                                <span class="font-semibold text-stone-700">נפגשות בשדה</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-shopping-bag text-autumn mt-1 text-base"></i>
+                            <p>בלי איחורים, הדיוטי פרי קורא לנו!</p>
+                        </div>
+                    </details>
 
-                <!-- Timeline items -->
-                <div class="space-y-0">
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">10:50</span>
+                                <span class="font-semibold text-stone-700">ממריאים</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-plane-departure text-autumn mt-1 text-base"></i>
+                            <p>צ'או ישראל 🇮🇱✈️</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">8:00</span>
-                            <p class="text-stone-700 font-medium">נפגשות בשדה (מתרגשות!)</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">14:00</span>
+                                <span class="font-semibold text-stone-700">נחיתה מילאנו מלפנסה</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-pizza-slice text-autumn mt-1 text-base"></i>
+                            <p>בנג'ורנו!</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">10:50</span>
-                            <p class="text-stone-700 font-medium">ממריאות</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">15:30</span>
+                                <span class="font-semibold text-stone-700">יוצאות להרים</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-car text-autumn mt-1 text-base"></i>
+                            <p>אני על ההגה, אתן על הדי.ג'יי 🎶🚗</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">14:00</span>
-                            <p class="text-stone-700 font-medium">נחיתה במילאנו מלפנסה</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">19:00</span>
+                                <span class="font-semibold text-stone-700">הגעה לווילה</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-home text-autumn mt-1 text-base"></i>
+                            <p>התמקמות, ארוחת ערב מעשה ידינו, לילה טוב 🍷</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">15:30</span>
-                            <p class="text-stone-700 font-medium">יוצאות לכיוון ההרים</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-[#b7410e] border-2 border-[#e69a22] z-10 mt-1 shadow-sm"></div>
-                            <!-- No connecting line for the last item -->
-                        </div>
-                        <div class="pb-2 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">19:00</span>
-                            <p class="text-stone-700 font-medium">הגעה לווילה, התמקמות, ארוחת ערב מפנקת ולילה טוב.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </article>
 
-        <!-- Day 2 Card -->
-        <article class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden fade-in-up delay-200 border border-stone-50">
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-1">
-                    <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-l from-[#b7410e] to-[#e69a22]">יום ב' 19/10</h2>
-                    <span class="text-2xl">🍁</span>
+            <div class="bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden">
+                <div class="bg-teal-50 border-b border-teal-100 px-5 py-3 flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-teal-custom"><i class="fab fa-canadian-maple-leaf ml-2"></i>יום ב' 19/10: אגם טובל ועמק נון</h2>
                 </div>
-                <h3 class="text-lg font-bold text-stone-500 mb-6 border-b border-stone-100 pb-3">אגם טובל ועמק נון</h3>
+                <div class="p-4 space-y-3">
+                    
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">9:00</span>
+                                <span class="font-semibold text-stone-700">ארוחת בוקר מול האגם</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-coffee text-teal-custom mt-1 text-base"></i>
+                            <p>קפה חובה כדי שנוכל לתפקד ☕</p>
+                        </div>
+                    </details>
 
-                <div class="space-y-0">
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">10:00</span>
+                                <span class="font-semibold text-stone-700">יוצאות לדרך</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-walking text-teal-custom mt-1 text-base"></i>
+                            <p>שעה רשמית, אולי קצת נמרח אבל נשתדל! 😅</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">9:00</span>
-                            <p class="text-stone-700 font-medium">ארוחת בוקר (איזה כיף!)</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">11:00</span>
+                                <span class="font-semibold text-stone-700">אגם טובל</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-camera-retro text-teal-custom mt-1 text-base"></i>
+                            <p>שלכת משוגעת, להכין את המצלמות והפוזות 📸🍂</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">10:00</span>
-                            <p class="text-stone-700 font-medium">יוצאות לדרך</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">13:30</span>
+                                <span class="font-semibold text-stone-700">תצפית אגם וטירת קלס</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-cookie-bite text-teal-custom mt-1 text-base"></i>
+                            <p>פיקניק צהריים על הנוף. מי אחראית על עוגיות השוקולד צ'יפס? 🍪</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">11:00</span>
-                            <p class="text-stone-700 font-medium">אגם טובל (מוקף בשלכת מטורפת)</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">15:00</span>
+                                <span class="font-semibold text-stone-700">כפר פונדו והנקיק</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-comments text-teal-custom mt-1 text-base"></i>
+                            <p>הליכה קלילה לאגם סמרלדו, אפשר לרכל בכיף תוך כדי 🤫</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">13:30</span>
-                            <p class="text-stone-700 font-medium">תצפית אגם סנטה ג'וסטינה וטירת קלס, ארוחת צהריים מול הנוף</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">18:00</span>
+                                <span class="font-semibold text-stone-700">חזרה לוילה</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-bed text-teal-custom mt-1 text-base"></i>
+                            <p>זמן לנוח ולהתארגן לארוחת ערב.</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">15:00</span>
-                            <p class="text-stone-700 font-medium">כפר פונדו והמסלול הקליל בנקיק לאגם סמרלדו</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-[#b7410e] border-2 border-[#e69a22] z-10 mt-1 shadow-sm"></div>
-                        </div>
-                        <div class="pb-2 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">18:00</span>
-                            <p class="text-stone-700 font-medium">חזרה לוילה, ארוחת ערב וזמן בנות.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <!-- Day 3 Card -->
-        <article class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden fade-in-up delay-300 border border-stone-50">
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-1">
-                    <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-l from-[#b7410e] to-[#e69a22]">יום ג' 20/10</h2>
-                    <span class="text-2xl">🏔️</span>
-                </div>
-                <h3 class="text-lg font-bold text-stone-500 mb-6 border-b border-stone-100 pb-3">הפסגות הדרמטיות של הדולומיטים</h3>
-
-                <div class="space-y-0">
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
-                        </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">9:00</span>
-                            <p class="text-stone-700 font-medium">ארוחת בוקר</p>
-                        </div>
-                    </div>
-
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
-                        </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">10:00</span>
-                            <p class="text-stone-700 font-medium">יוצאות לדרך</p>
-                        </div>
-                    </div>
-
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
-                        </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">11:30</span>
-                            <p class="text-stone-700 font-medium">רכבל סשדה - הנוף הכי יפה בדולומיטים והליכה אל הצוקים</p>
-                        </div>
-                    </div>
-
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
-                        </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">14:30</span>
-                            <p class="text-stone-700 font-medium">רכבל אלפ די סיוסי לרמה הכי גדולה באירופה, פיקניק צהריים מול הנוף הפתוח</p>
-                        </div>
-                    </div>
-
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-[#b7410e] border-2 border-[#e69a22] z-10 mt-1 shadow-sm"></div>
-                        </div>
-                        <div class="pb-2 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">18:30</span>
-                            <p class="text-stone-700 font-medium">חזרה לוילה לארוחת ערב ולילה טוב.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </article>
 
-        <!-- Day 4 Card -->
-        <article class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden fade-in-up delay-400 border border-stone-50">
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-1">
-                    <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-l from-[#b7410e] to-[#e69a22]">יום ד' 21/10</h2>
-                    <span class="text-2xl">💧</span>
+            <div class="bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden">
+                <div class="bg-orange-50 border-b border-orange-100 px-5 py-3 flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-autumn"><i class="fas fa-mountain ml-2"></i>יום ג' 20/10: הפסגות הדרמטיות</h2>
                 </div>
-                <h3 class="text-lg font-bold text-stone-500 mb-6 border-b border-stone-100 pb-3">אגמים, מפלים ועיירות יפות</h3>
+                <div class="p-4 space-y-3">
+                    
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">9:00</span>
+                                <span class="font-semibold text-stone-700">ארוחת בוקר</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-mug-hot text-autumn mt-1 text-base"></i>
+                            <p>בוקר טוב! מתארגנות ליום פסגות.</p>
+                        </div>
+                    </details>
 
-                <div class="space-y-0">
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">10:00</span>
+                                <span class="font-semibold text-stone-700">יוצאות לדרך</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-stopwatch text-autumn mt-1 text-base"></i>
+                            <p>בלי להתמרח, ההרים לא יחכו לנו! ⛰️</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">9:00</span>
-                            <p class="text-stone-700 font-medium">ארוחת בוקר</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">11:30</span>
+                                <span class="font-semibold text-stone-700">רכבל סשדה</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-snowflake text-autumn mt-1 text-base"></i>
+                            <p>הנוף הכי יפה בדולומיטים, נא להתלבש חם כי קפוא למעלה 🧣</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">10:00</span>
-                            <p class="text-stone-700 font-medium">יוצאות לדרך</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">14:30</span>
+                                <span class="font-semibold text-stone-700">רכבל אלפ די סיוסי</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-tram text-autumn mt-1 text-base"></i>
+                            <p>פיקניק צהריים מול הנוף ברמה הגדולה באירופה 🥪</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">11:00</span>
-                            <p class="text-stone-700 font-medium">אגם טנו - מי טורקיז צלולים במיוחד</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">18:30</span>
+                                <span class="font-semibold text-stone-700">חזרה לוילה</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-moon text-autumn mt-1 text-base"></i>
+                            <p>חוזרות להפשיר מול החימום.</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">12:30</span>
-                            <p class="text-stone-700 font-medium">מפלי ורונה - מפלים אדירים וגן בוטני מרהיב</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
-                        </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">14:00</span>
-                            <p class="text-stone-700 font-medium">ריבה דל גארדה - פיקניק צהריים על המים, סיבוב בעיירה היפה ושייט באגם</p>
-                        </div>
-                    </div>
-
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
-                        </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">17:00</span>
-                            <p class="text-stone-700 font-medium">אגם קאבדין - עצירה קטנה ופוטוגנית מול הנוף</p>
-                        </div>
-                    </div>
-
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-[#b7410e] border-2 border-[#e69a22] z-10 mt-1 shadow-sm"></div>
-                        </div>
-                        <div class="pb-2 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">18:30</span>
-                            <p class="text-stone-700 font-medium">חזרה לוילה, ארוחת ערב.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </article>
 
-        <!-- Day 5 Card -->
-        <article class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden fade-in-up delay-500 border border-stone-50">
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-1">
-                    <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-l from-[#b7410e] to-[#e69a22]">יום ה' 22/10</h2>
-                    <span class="text-2xl">🛍️</span>
+            <div class="bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden">
+                <div class="bg-teal-50 border-b border-teal-100 px-5 py-3 flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-teal-custom"><i class="fas fa-water ml-2"></i>יום ד' 21/10: אגמים ומפלים</h2>
                 </div>
-                <h3 class="text-lg font-bold text-stone-500 mb-6 border-b border-stone-100 pb-3">נפרדות מהנוף, יורדות לעיר</h3>
+                <div class="p-4 space-y-3">
+                    
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">9:00</span>
+                                <span class="font-semibold text-stone-700">ארוחת בוקר</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-utensils text-teal-custom mt-1 text-base"></i>
+                            <p>מתחילות עוד יום מהמם.</p>
+                        </div>
+                    </details>
 
-                <div class="space-y-0">
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">10:00</span>
+                                <span class="font-semibold text-stone-700">יוצאות לדרך</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-car text-teal-custom mt-1 text-base"></i>
+                            <p>יאללה בנות למכוניות!</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">9:00</span>
-                            <p class="text-stone-700 font-medium">ארוחת בוקר אחרונה בהרים</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">11:00</span>
+                                <span class="font-semibold text-stone-700">אגם טנו</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-tint text-teal-custom mt-1 text-base"></i>
+                            <p>מי טורקיז צלולים שבא לשתות 💧</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">11:00</span>
-                            <p class="text-stone-700 font-medium">נפרדות מהוילה ויורדות</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">12:30</span>
+                                <span class="font-semibold text-stone-700">מפלי ורונה</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-umbrella text-teal-custom mt-1 text-base"></i>
+                            <p>מפלים אדירים, קצת רסיסי מים לריענון 💦</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">12:30</span>
-                            <p class="text-stone-700 font-medium">יוצאות לדרך חזרה למילאנו</p>
+                    </details>
+                    
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">14:00</span>
+                                <span class="font-semibold text-stone-700">ריבה דל גארדה</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-ship text-teal-custom mt-1 text-base"></i>
+                            <p>פיקניק צהריים על המים, סיבוב בעיירה ושייט קליל ⛴️</p>
                         </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">17:00</span>
+                                <span class="font-semibold text-stone-700">אגם קאבדין</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-sun text-teal-custom mt-1 text-base"></i>
+                            <p>עצירה קטנה לנשום עוד קצת נוף לפני החושך 🌅</p>
                         </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">15:00</span>
-                            <p class="text-stone-700 font-medium">זמן שופינג! קניון ELNÒS SHOPPING</p>
-                        </div>
-                    </div>
+                    </details>
 
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-[#b7410e] border-2 border-[#e69a22] z-10 mt-1 shadow-sm"></div>
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">18:30</span>
+                                <span class="font-semibold text-stone-700">חזרה לוילה</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-home text-teal-custom mt-1 text-base"></i>
+                            <p>מתארגנות לערב אחרון בוילה.</p>
                         </div>
-                        <div class="pb-2 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">21:30</span>
-                            <p class="text-stone-700 font-medium">הגעה למלון ליד השדה והתארגנות לטיסה.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
+                    </details>
 
-        <!-- Day 6 Card -->
-        <article class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden fade-in-up delay-600 border border-stone-50">
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-1">
-                    <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-l from-[#b7410e] to-[#e69a22]">יום ו' 23/10</h2>
-                    <span class="text-2xl">🇮🇱</span>
-                </div>
-                <h3 class="text-lg font-bold text-stone-500 mb-6 border-b border-stone-100 pb-3">חוזרות הביתה</h3>
-
-                <div class="space-y-0">
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
-                        </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">2:30</span>
-                            <p class="text-stone-700 font-medium">יוצאות לשדה (לקום מוקדם!)</p>
-                        </div>
-                    </div>
-
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-teal-100 border-2 border-[#40e0d0] z-10 mt-1 shadow-sm transition-colors group-hover:bg-[#e69a22] group-hover:border-[#b7410e]"></div>
-                            <div class="w-0.5 bg-stone-200 h-full -mt-2"></div>
-                        </div>
-                        <div class="pb-6 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">5:00</span>
-                            <p class="text-stone-700 font-medium">ממריאות</p>
-                        </div>
-                    </div>
-
-                    <div class="flex group">
-                        <div class="flex flex-col items-center ml-4">
-                            <div class="w-4 h-4 rounded-full bg-[#40e0d0] border-2 border-teal-200 z-10 mt-1 shadow-sm"></div>
-                        </div>
-                        <div class="pb-2 flex-1">
-                            <span class="inline-block bg-[#40e0d0]/10 text-teal-800 font-bold px-2.5 py-0.5 rounded-md mb-1.5 text-sm">9:50</span>
-                            <p class="text-stone-700 font-bold text-lg">ברוכות השבות לישראל! ❤️</p>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </article>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden">
+                <div class="bg-orange-50 border-b border-orange-100 px-5 py-3 flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-autumn"><i class="fas fa-shopping-bags ml-2"></i>יום ה' 22/10: יורדים לעיר</h2>
+                </div>
+                <div class="p-4 space-y-3">
+                    
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">9:00</span>
+                                <span class="font-semibold text-stone-700">ארוחת בוקר אחרונה מול הנוף</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-heart-broken text-autumn mt-1 text-base"></i>
+                            <p>פרידה קשה 😢</p>
+                        </div>
+                    </details>
+
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">11:00</span>
+                                <span class="font-semibold text-stone-700">נפרדים מהוילה</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-door-open text-autumn mt-1 text-base"></i>
+                            <p>אורזות ויורדות לכיוון האגם.</p>
+                        </div>
+                    </details>
+
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">12:30</span>
+                                <span class="font-semibold text-stone-700">יוצאים לדרך למילאנו</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-city text-autumn mt-1 text-base"></i>
+                            <p>חוזרות לציביליזציה 🏙️</p>
+                        </div>
+                    </details>
+
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">15:00</span>
+                                <span class="font-semibold text-stone-700">שופינג בקניון ELNÒS</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-credit-card text-autumn mt-1 text-base"></i>
+                            <p>להכין כרטיסי אשראי ומקום במזוודה! 👗👠</p>
+                        </div>
+                    </details>
+                    
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-autumn/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-teal-custom text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">21:30</span>
+                                <span class="font-semibold text-stone-700">הגעה למלון ליד השדה</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-suitcase-rolling text-autumn mt-1 text-base"></i>
+                            <p>השלמות אריזה ולילה טוב (וקצר) 😴</p>
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden">
+                <div class="bg-teal-50 border-b border-teal-100 px-5 py-3 flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-teal-custom"><i class="fas fa-map-marker-alt ml-2"></i>יום ו' 23/10: הביתה</h2>
+                </div>
+                <div class="p-4 space-y-3">
+                    
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">2:30</span>
+                                <span class="font-semibold text-stone-700">יוצאות לשדה</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-moon text-teal-custom mt-1 text-base"></i>
+                            <p>מוקדם ברמות, תשלימו שעות שינה בטיסה 🥱</p>
+                        </div>
+                    </details>
+
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">5:00</span>
+                                <span class="font-semibold text-stone-700">ממריאים</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-plane-up text-teal-custom mt-1 text-base"></i>
+                            <p>ביי ביי איטליה!</p>
+                        </div>
+                    </details>
+
+                    <details class="group bg-stone-50 rounded-xl border border-stone-200 open:border-teal-custom/50 transition-colors">
+                        <summary class="flex items-center justify-between p-3 cursor-pointer select-none">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-autumn text-white text-sm font-bold px-2 py-0.5 rounded shadow-sm">9:50</span>
+                                <span class="font-semibold text-stone-700">ברוכים הבאים לישראל</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-stone-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-4 pb-3 pt-1 flex gap-3 text-stone-600 text-sm bg-white rounded-b-xl border-t border-stone-100 mt-1">
+                            <i class="fas fa-heart text-teal-custom mt-1 text-base"></i>
+                            <p>חוזרות למציאות ❤️</p>
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+
+        </div>
 
     </main>
+
+    <footer class="text-center py-10 px-4 text-stone-500 font-semibold border-t border-stone-200 mt-4 bg-stone-100/50">
+        <p><i class="fas fa-cloud-sun ml-1 text-autumn"></i> בכפוף למזג האוויר ולתנאי השטח</p>
+    </footer>
 
 </body>
 </html>
